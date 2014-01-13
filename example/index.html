@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Count My Characters!</title>
+    <script src="charCount.js" type="application/javascript"></script>
+</head>
+<body>
+<div id="field">
+    <textarea id="input"></textarea>
+    <button onclick="countMyChars()">Count My Characters</button>
+</div>
+<div id="output"></div>
+</body>
+<script>
+    function countMyChars() {
+        countChars(document.getElementById("input").value);
+    }
+</script>
+
+</html>
