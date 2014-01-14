@@ -60,7 +60,6 @@
                         <li>Validators</li>
                         <li>Spies</li>
                         <li>Testing the Clock</li>
-                        <li>Demo</li>
                         <li>Additional Utilities</li>
                         <li>Alternatives</li>
                     </ol>
@@ -101,6 +100,18 @@
                     <pre class="fragment"><code>it(description, testFunction)</code></pre>
                     <pre class="fragment"><code>afterEach(tearDownFunction)</code></pre>
                     <pre class="fragment"><code>xdescribe() | xit()</code></pre>
+                    
+                    <aside class="notes">
+                        beforeEach and afterEach act as the setup and tearDown methods for the tests. They will be run progressively
+                        down the describe blocks for each set of specs. The describe() element defines a set of tests and allows
+                        for describe blocks to be nested to keep logical functionalities together. The it() function defines
+                        the test cases. The describe() and it() functions take in a descriptive string along with a function containing 
+                        the functionality for the test. You can ignore tests by prefixing the suite or test functions for `x`.
+                        
+                        Jasmine 2.0 adds additional changes to provide for asynchronous testing, passing in a done function as
+                        a parameter to the beforeEach, it, and afterEach functions. Additionally, the xit and xdescribe no
+                        longer just ignore tests but they are marked as pending in the test results.
+                    </aside>
 				</section>
 
 				
@@ -126,6 +137,14 @@
                     <section>
                         <h3>Additional Validators</h3>
                         <p>.toMatch(), .toBeTruthy(), .toBeFalsy(), .toContain(), .toBeLessThan(), .toBeGreaterThan(), .toBeCloseTo() .toThrow(), jasmine.any()</p>
+                        <aside class="notes">
+                            .toMatch() Matches a string against a regular expression.
+                            .toContain() checks against an array for an object.
+                            .toBeCloseTo() Checks against a # to see if the result is close to it.
+                            jasmine.any() can be used to check against any object types. ex. jasmine.any(Function), jasmine.any(Number), jasmine.any(Object).
+                                this cannot be used with .toBe() but does work with .toEqual()
+                            Jasmine 2.0 also adds the jasmine.objectContaining() to check that an object contains certain values.
+                        </aside>
                     </section>
                     <section>
                         <h3>Custom Validators</h3>
@@ -144,6 +163,12 @@ beforeEach(function() {
 
                     <section>
                         <h2>Spies</h2>
+                        <aside class="notes">
+                            Spies create a mock function in place of an existing function. Jasmine keeps track of the original
+                            and after running each spec it puts the original function back on the object as necessary.
+                            The mock functions contain a number of additional properties and ability to define how the 
+                            function acts when called.
+                        </aside>
                     </section>
                     <section>
                         <h3>Spy Creation</h3>
@@ -157,6 +182,15 @@ beforeEach(function() {
                         <pre><code>.andCallFake(function(){})</code></pre>
                         <pre><code>.andCallThrough()</code></pre>
                         <pre><code>.andThrow(err)</code></pre>
+                        
+                        <aside class="notes">
+                            In Jasmine 2.0 the syntax for these functions has changed.
+                            and.returnValue()
+                            and.callFake()
+                            and.callThrough()
+                            and.throwError()
+                            and.stub()
+                        </aside>
                     </section>
                     <section>
                         <h3>Spy Validators</h3>
@@ -171,6 +205,10 @@ spy.calls[0].args[]
 spy.mostRecentCall
 spy.callCount
                         </code></pre>
+                        <aside class="notes">
+                            Jasmine 2.0 adds a whole bunch of new utility functions to better access the calls and 
+                            arguments in the spy as well as reset the spy's call information.
+                        </aside>
                     </section>
                     <section>
                         <h2>Using Spies to test AJAX</h2>
@@ -204,10 +242,9 @@ it("causes a timeout to be called synchronously", function() {
 });
 
                     </code></pre>
-                </section>
-
-                <section>
-                    <h2>Demo Time!</h2>
+                    <aside class="notes">
+                        Jasmine 2.0 has additional configuration for this.
+                    </aside>
                 </section>
 
                 <section>
