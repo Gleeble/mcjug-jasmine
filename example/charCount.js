@@ -7,12 +7,16 @@ function countChars(text) {
         counts[char] = counts[char] ? ++counts[char] : 1;
     }
 
+    return counts;
+}
+
+function displayCounts(charCountMap) {
     var output = "<ul>";
 
-    var keys = Object.keys(counts).sort();
+    var keys = Object.keys(charCountMap).sort();
 
     keys.forEach(function(key){
-        output += "<li>"+ key + ":" + counts[key] +"</li>";
+        output += "<li>"+ key + ":" + charCountMap[key] +"</li>";
     });
 
     document.getElementById("output").innerHTML = output + "</ul>";
